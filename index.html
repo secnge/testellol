@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Honeybadger Test</title>
+
+  <!-- Honeybadger snippet -->
+  <script src="//js.honeybadger.io/v6.16/honeybadger.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    Honeybadger.configure({
+      apiKey: "hbp_kkY2Wtkbp2Gy57ymlpbENqEvHN3Hha4COu5O",
+      environment: "production"
+    });
+  </script>
+</head>
+<body>
+
+  <h1>Honeybadger Integration Test</h1>
+  <button id="test-btn">Send Test Error</button>
+
+  <script>
+    document.getElementById('test-btn').addEventListener('click', function() {
+      Honeybadger.notify("Testing Honeybadger!");
+      alert("Test notification sent to Honeybadger!");
+    });
+  </script>
+
+</body>
+</html>
