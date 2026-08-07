@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Honeybadger Test</title>
 
-  <!-- Honeybadger snippet -->
-  <script src="//js.honeybadger.io/v6.16/honeybadger.min.js" type="text/javascript"></script>
+  <!-- Notice the explicit https: here -->
+  <script src="https://js.honeybadger.io/v6.16/honeybadger.min.js" type="text/javascript"></script>
   <script type="text/javascript">
-    Honeybadger.configure({
-      apiKey: "hbp_kkY2Wtkbp2Gy57ymlpbENqEvHN3Hha4COu5O",
-      environment: "production"
-    });
+    if (typeof Honeybadger !== 'undefined') {
+      Honeybadger.configure({
+        apiKey: "hbp_kkY2Wtkbp2Gy57ymlpbENqEvHN3Hha4COu5O",
+        environment: "production"
+      });
+    }
   </script>
 </head>
 <body>
@@ -21,8 +23,12 @@
 
   <script>
     document.getElementById('test-btn').addEventListener('click', function() {
-      Honeybadger.notify("Testing Honeybadger!");
-      alert("Test notification sent to Honeybadger!");
+      if (typeof Honeybadger !== 'undefined') {
+        Honeybadger.notify("Testing Honeybadger!");
+        alert("Test notification sent to Honeybadger!");
+      } else {
+        alert("Honeybadger failed to load. Check your internet connection or ad blocker.");
+      }
     });
   </script>
 
